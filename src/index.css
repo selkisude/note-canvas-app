@@ -1185,3 +1185,23 @@ button.active {
     touch-action: none !important;
   }
 }
+
+@media (max-width: 700px) {
+  .viewport {
+    touch-action: none !important;
+    overscroll-behavior: contain;
+  }
+
+  .viewport.mode-select {
+    overflow-y: auto !important;
+    touch-action: pan-y !important;
+  }
+
+  .viewport.mode-pen,
+  .viewport.mode-highlighter,
+  .viewport.mode-eraser,
+  .viewport.mode-text {
+    overflow-y: hidden !important;
+    touch-action: none !important;
+  }
+}

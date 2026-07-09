@@ -352,6 +352,38 @@ export function CanvasPage() {
     );
   }, [isInitialLoadDone, activeFolderId, activeFileId, activePageId]);
 
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    function preventScrollWhenDrawing(event: TouchEvent) {
+      if (!isMobileViewport()) return;
+
+      const isDrawingMode =
+        mode === "pen" ||
+        mode === "highlighter" ||
+        mode === "eraser" ||
+        mode === "text";
+
+      if (isDrawingMode) {
+        event.preventDefault();
+        return;
+      }
+
+      if (event.touches.length === 2) {
+        event.preventDefault();
+      }
+    }
+
+    viewport.addEventListener("touchmove", preventScrollWhenDrawing, {
+      passive: false,
+    });
+
+    return () => {
+      viewport.removeEventListener("touchmove", preventScrollWhenDrawing);
+    };
+  }, [mode]);
+
   function pushHistory(action: HistoryAction) {
     setUndoStack((prev) => [...prev, action]);
   }
