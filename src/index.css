@@ -1116,3 +1116,53 @@ button.active {
     touch-action: pan-y pinch-zoom;
   }
 }
+
+.mobile-back-to-files {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .mobile-back-to-files {
+    display: block;
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    top: auto;
+    right: auto;
+    z-index: 140;
+
+    border-radius: 999px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  }
+
+  .mobile-back-to-files:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .mobile-pages-toggle {
+    right: 16px;
+    bottom: 16px;
+    left: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .viewport {
+    touch-action: none;
+  }
+
+  .viewport.mode-select {
+    touch-action: pan-y;
+  }
+
+  .viewport.mode-pen,
+  .viewport.mode-highlighter,
+  .viewport.mode-eraser,
+  .viewport.mode-text {
+    touch-action: none;
+  }
+}

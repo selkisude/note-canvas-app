@@ -1980,6 +1980,13 @@ function isPointNearStroke(point: Point, stroke: StrokeObject, radius: number) {
 
       <div className="workspace">
         <button
+          className="mobile-back-to-files"
+          onClick={closeFile}
+        >
+          ← Defterler
+        </button>
+
+        <button
           className="mobile-pages-toggle"
           onClick={() => setIsMobilePagesOpen((prev) => !prev)}
         >
