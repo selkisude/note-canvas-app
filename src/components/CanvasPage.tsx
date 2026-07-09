@@ -452,6 +452,10 @@ export function CanvasPage() {
   function handleTouchStart(event: React.TouchEvent<HTMLDivElement>) {
     if (!isMobileViewport()) return;
 
+    if (event.touches.length === 1 && mode !== "select") {
+      event.preventDefault();
+    }
+
     if (event.touches.length !== 2) return;
 
     const viewport = viewportRef.current;
@@ -482,6 +486,12 @@ export function CanvasPage() {
 
   function handleTouchMove(event: React.TouchEvent<HTMLDivElement>) {
     if (!isMobileViewport()) return;
+
+    if (event.touches.length === 1 && mode !== "select") {
+      event.preventDefault();
+      return;
+    }
+
     if (!pinchState.current) return;
     if (event.touches.length !== 2) return;
 
